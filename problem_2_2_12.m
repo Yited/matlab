@@ -1,9 +1,0 @@
-clear
-syms R(t) R(s) K Y(t) Y(s) t s Y(Inf)
-
-R(t) = stepfun(t, 0) %R(t)은 유닛 스텝 함수(u(t))
-R(s) = laplace(R(t),t,s) %R(s)는 R(t)의 라플라스
-Y(s) = R(s)*K/(s+50) %Y(s)정의
-Y(t) = ilaplace(Y(s),s,t) %Y(t)는 Y(s)의 역라플라스
-Y(Inf) = limit(Y(t),t,inf) %Y(t)의 무한대 극한
-K = solve(Y(Inf)==1,K) %Y(t)극한 == 1 계산 후 결과값 도출
